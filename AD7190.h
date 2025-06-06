@@ -57,6 +57,7 @@ class AD7190 {
         static const byte REFIN2 = 0x1;
         
         bool cont_read;   // Whether or not ADC is in continuous read mode (see datasheet p.19)
+        bool unipolar = false;
 
         byte spi_transfer(volatile byte data) {
             SPI.beginTransaction(SPISettings(2500000, MSBFIRST, SPI_MODE3));
@@ -72,7 +73,7 @@ class AD7190 {
         unsigned long read_register(byte reg, int nbytes);
         bool data_ready();
         bool is_error();
-        unsigned long read_data();
+        double read_data();
         void set_mode(byte mode, byte clock);
         void set_config(byte refsel, byte channels, byte polarity, byte gain);
         void init(byte mode, byte clock, byte refsel, byte channels, byte polarity, byte gain);

@@ -66,11 +66,18 @@ bool AD7190::is_error() {
 }
 
 // Read out 24 bits from the data register
-unsigned long AD7190::read_data() {
+double AD7190::read_data() {
     while (!data_ready()) {
     }
 
-    return read_register(DATA, 3, cont_read);
+    unsigned long reg = read_register(DATA, 3, cont_read);
+
+    if (unipolar) {
+        double data = ((double) reg)/0x800000 * vref;
+    }
+    else {
+        double data = ((double) reg)/0x800000 * 2*vref - vref;
+    }
 }
 
 // Set mode register values (see datasheet p.21)
@@ -102,6 +109,7 @@ void AD7190::set_config(byte refsel, byte channels, byte polarity, byte gain) {
 }
 
 void AD7190::init(byte mode, byte clock, byte refsel, byte channels, byte polarity, byte gain) {
+    unipolar = polarity;
     set_mode(mode, clock);
     set_config(refsel, channels, polarity, gain);
     if (cont_read) {
