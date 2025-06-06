@@ -22,7 +22,7 @@ void AD7190::reset() {
 
 // Either read from or write to a register. cont means continuous read mode (see datasheet p.19)
 void AD7190::set_next_op(byte read, byte reg, byte cont) {
-    byte writeval = (read << 6) || (reg << 3) || (cont << 2);
+    byte writeval = (read << 6) | (reg << 3) | (cont << 2);
 
     digitalWrite(CS, LOW);
     spi_transfer(writeval);
