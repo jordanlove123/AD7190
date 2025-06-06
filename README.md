@@ -9,8 +9,4 @@ This program works by using [SPI](https://www.analog.com/en/resources/analog-dia
 This register, shockingly, contains information for communicating with the chip. According to the datasheet, all communication starts with a write to this register, so for example if you wanted to write to the second register (mode), you would write 010 to the CR3-5 bits along with other bits if necessary, then send the information for the mode register on the next transfer.
 
 ## Installation instructions
-To install this library, first download it as a zip file. Then open the [Arduino IDE](https://www.arduino.cc/en/software/) and navigate to Sketch > Include Library > Add .ZIP Library.
-
-![Adding AD7190 library](./images/library.png "Adding AD7190 library")
-
-Finally, select the file you just downloaded and you'll have it installed. Use `#include <AD7190.h>` to use it in your code.
+To install this library, first download it as a zip file. Then open the [Arduino IDE](https://www.arduino.cc/en/software/) and navigate to Sketch > Include Library > Add .ZIP Library. Finally, select the file you just downloaded and you'll have it installed. Use `#include <AD7190.h>` to use it in your code.
