@@ -1,5 +1,5 @@
 #include <SPI.h>
-#include <AD770X.h>
+#include <AD7190.h>
 
 AD7190 ad7190(2.5, true);
 double v;
