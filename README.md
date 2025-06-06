@@ -6,7 +6,7 @@ For more information in some of the code, there are some comments that say refer
 
 This program works by using [SPI](https://www.analog.com/en/resources/analog-dialogue/articles/introduction-to-spi-interface.html) to read and write to the AD7190's on-chip registers. Each register represents a category of information about the chip and the bits of each register represent a particular piece of information within that category. For example, the communication register (datasheet p.19):
 ![Communication Register Layout](./images/communication.png "Communication register layout (p.19)")
-This register, shockingly, contains information for communicating with the chip. According to the datasheet, all communication starts with a write to this register, so for example if you wanted to write to the second register (mode), you would write 010 to the CR3-5 bits along with other bits if necessary, then send the information for the mode register on the next transfer.
+This register, shockingly, contains information for communicating with the chip, and all communications start with a write to this register. As an example, bits C3-5 contain the number of the next register you will access, so if you wanted to write to the second register (mode), you would write 010 (2 decimal) to the CR3-5 bits, then send the information for the mode register on the next transfer.
 
 ## Example
 Part of this library is an example called example.txt. Use the following wiring with this program to ensure it runs correctly:
