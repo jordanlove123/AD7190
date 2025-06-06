@@ -1,0 +1,23 @@
+#include <SPI.h>
+#include <AD770X.h>
+
+AD7190 ad7190(2.5);
+double v;
+
+void setup()
+{
+  Serial.begin(9600);
+
+  ad7190.init(AD7190::AIN1_2);  
+  ad7190.init(AD7190::CHN_AIN2);
+}
+
+void loop()
+{
+  v = ad7190.readADResult(AD7190::CHN_AIN1);
+  Serial.print(v, 6);
+
+  v = ad7190.readADResult(AD7190::CHN_AIN2);
+  Serial.print(" : ");
+  Serial.println(v, 6);
+}
