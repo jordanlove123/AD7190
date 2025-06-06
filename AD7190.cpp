@@ -104,6 +104,11 @@ void AD7190::set_config(byte refsel, byte channels, byte polarity, byte gain) {
 void AD7190::init(byte mode, byte clock, byte refsel, byte channels, byte polarity, byte gain) {
     set_mode(mode, clock);
     set_config(refsel, channels, polarity, gain);
+    if (cont_read) {
+        digitalWrite(CS, LOW);
+        spi_transfer(0x5C);       // Set up continuous reading
+        digitalWrite(CS, HIGH);
+    }
 }
 
 void AD7190::init(byte channels) {
