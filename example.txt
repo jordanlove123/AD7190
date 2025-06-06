@@ -1,22 +1,22 @@
 #include <SPI.h>
 #include <AD7190.h>
 
-AD7190 ad7190(2.5, true);
+AD7190 ad7190(2.5, true);    // Create a new AD7190 object with a 2.5V reference voltage and continuous data reading
 double v;
 
 void setup()
 {
-  Serial.begin(9600);
+  Serial.begin(9600);    // Start serial interface
 
-  ad7190.init(AD7190::AIN1_2 | AD7190::AIN3_4);
+  ad7190.init(AD7190::AIN1_2 | AD7190::AIN3_4);    // Initialize the ADC, taking data from AIN1_2 and AIN3_4
 }
 
 void loop()
 {
-  v = ad7190.read_data(AD7190::AIN1_2);
+  v = ad7190.read_data(AD7190::AIN1_2);    // Read voltage between AIN1 and AIN2
   Serial.print(v, 6);
 
-  v = ad7190.read_data(AD7190::AIN3_4);
+  v = ad7190.read_data(AD7190::AIN3_4);    // Read voltage between AIN3 and AIN4
   Serial.print(" : ");
   Serial.println(v, 6);
 }
