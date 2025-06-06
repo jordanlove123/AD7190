@@ -78,6 +78,8 @@ double AD7190::read_data() {
     else {
         double data = ((double) reg)/0x800000 * 2*vref - vref;
     }
+
+    return data;
 }
 
 // Set mode register values (see datasheet p.21)
