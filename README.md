@@ -10,5 +10,7 @@ This register, shockingly, contains information for communicating with the chip.
 
 ## Installation instructions
 To install this library, first download it as a zip file. Then open the [Arduino IDE](https://www.arduino.cc/en/software/) and navigate to Sketch > Include Library > Add .ZIP Library.
+
 ![Adding AD7190 library](./images/library.png "Adding AD7190 library")
+
 Finally, select the file you just downloaded and you'll have it installed. Use `#include <AD7190.h>` to use it in your code.
