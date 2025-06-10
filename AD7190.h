@@ -87,4 +87,4 @@ class AD7190 {
         double vref;
 
         unsigned long read_register(byte reg, int nbytes, bool cont);
-}
+};
